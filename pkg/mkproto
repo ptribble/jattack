@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# generate a prototype file for input to pkgmk
+#
+# feed to pkgmk like so:
+#  pkgmk -d /tmp -f tt -r `pwd` TRIBjattack
+#
+JARDIR=usr/share/jattack
+OWNER="root bin"
+SYSOWNER="root sys"
+
+echo "i pkginfo=./pkg/pkginfo"
+echo "i postinstall=./pkg/postinstall"
+echo "i postremove=./pkg/postinstall"
+echo "f none /usr/bin/jattack=pkg/jattack.installed 0755 ${OWNER}"
+echo "d none /usr/share 0755 ${SYSOWNER}"
+echo "d none /usr/share/applications 0755 root other"
+echo "d none /usr/share/pixmaps 0755 root other"
+echo "d none /usr/share/jattack 0755 ${OWNER}"
+echo "f none /usr/share/jattack/README=README 0755 ${OWNER}"
+echo "f none /usr/share/jattack/jattack.jar=jattack.jar 0755 ${OWNER}"
+echo "f none /usr/share/pixmaps/jattack.png=pixmaps/jattack.png 0755 ${OWNER}"
+echo "f none /usr/share/applications/jattack.desktop=jattack.desktop 0755 ${OWNER}"

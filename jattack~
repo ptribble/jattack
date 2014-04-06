@@ -1,0 +1,29 @@
+#!/bin/sh
+case $1 in
+'-build')
+	PATH=/usr/jdk/instances/jdk1.5.0/bin:$PATH
+	export PATH
+	javac uk/co/petertribble/jattack/*.java
+	jar -cmf jattack.manifest jattack.jar uk/co/petertribble/jattack/*.class
+	rm uk/co/petertribble/jattack/*.class
+	exit 0
+	;;
+'-pmd')
+	pmd uk imports,unusedcode,coupling,migrating,typeresolution,sunsecure,finalizers,clone,braces
+	# basic
+	exit 0
+	;;
+'-package')
+	./pkg/mkproto > pp
+	pkgmk -d /tmp -f pp -r `pwd` TRIBjattack
+	pkgtrans -s /tmp /tmp/TRIBjattack.pkg TRIBjattack
+	rm pp
+	cd /tmp
+	zip -q -r TRIBjattack TRIBjattack
+	mv TRIBjattack.zip TRIBjattack.zap
+	rm -fr /tmp/TRIBjattack
+	ls -l /tmp/TRIBjattack.pkg /tmp/TRIBjattack.zap
+	exit 0
+	;;
+esac
+exec java -jar jattack.jar

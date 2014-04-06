@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Jattack
+Comment=Java game based on Tetris Attack
+Exec=jattack
+Icon=jattack
+Terminal=false
+Type=Application
+Categories=Application;Game;
