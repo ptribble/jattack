@@ -1,3 +1,27 @@
+/*
+ * CDDL HEADER START
+ *
+ * The contents of this file are subject to the terms of the
+ * Common Development and Distribution License, Version 1.0 only
+ * (the "License").  You may not use this file except in compliance
+ * with the License.
+ *
+ * You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+ * or http://www.opensolaris.org/os/licensing.
+ * See the License for the specific language governing permissions
+ * and limitations under the License.
+ *
+ * When distributing Covered Code, include this CDDL HEADER in each
+ * file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+ * If applicable, add the following below this CDDL HEADER, with the
+ * fields enclosed by brackets "[]" replaced with your own identifying
+ * information: Portions Copyright [yyyy] [name of copyright owner]
+ *
+ * CDDL HEADER END
+ *
+ * Copyright 2011-2015 Peter C Tribble <peter.tribble@gmail.com>
+ */
+
 package uk.co.petertribble.jattack;
 
 import javax.swing.AbstractAction;
@@ -33,6 +57,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     // the original has 5: diamonds, circles, triangles, hearts, stars
     private Color[] Colours = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.PINK};
     private Color bgcolor = Color.BLACK;
+    private Color clickcolor = Color.WHITE;
 
     private InfoPanel ipanel;
 
@@ -435,6 +460,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 			jstart += nrows*cellsize;
 		    }
 		    jstart++;
+		    // highlight the currently clicked cell with a border
+		    if (i == colclick && j == rowclick) {
+			g2.setPaint(clickcolor);
+			g2.fill(new Rectangle2D.Double(istart-1, jstart-1, cellsize, cellsize));
+		    }
 		    // the partially visible row is shaded
 		    g2.setPaint((j == toprow) ? Colours[cells[i][j]].darker() : Colours[cells[i][j]]);
 		    g2.fill(new Rectangle2D.Double(istart, jstart, cellp, cellp));

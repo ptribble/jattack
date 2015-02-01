@@ -6,7 +6,8 @@ Boy.
 
 Rather than falling from above, rows of pieces rise from below. You can
 swap a piece with it's neighbour on the same horizontal line. If you
-create a run of 3 identical pieces, they're removed from the board.
+create a run of 3 or more identical pieces, they're removed from the
+board.
 
 As time goes on, the game moves faster. The aim is to survive as long
 as possible.
@@ -14,3 +15,5 @@ as possible.
 Changes in 1.1 include extra points for multiple matches.
 
 Changes in 1.2 are related to packaging
+
+In 1.3, the clicked cell is highlighted
