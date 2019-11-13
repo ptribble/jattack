@@ -40,7 +40,17 @@ public class AttackFrame extends JFrame implements ActionListener {
     private JMenuItem newItem;
     private AttackPanel apanel;
 
+    /*
+     * Default sizes.
+     */
+    private static final int DEFAULT_COLUMNS = 6;
+    private static final int DEFAULT_ROWS = 9;
+
     public AttackFrame() {
+	this(DEFAULT_COLUMNS, DEFAULT_ROWS);
+    }
+
+    public AttackFrame(int ncolumns, int nrows) {
 	super("JAttack");
 
 	addWindowListener(new winExit());
@@ -59,8 +69,7 @@ public class AttackFrame extends JFrame implements ActionListener {
 	jm.add(jmf);
 	setJMenuBar(jm);
 
-	// default size is 6 columns and 9 rows
-	apanel = new AttackPanel(6, 9);
+	apanel = new AttackPanel(ncolumns, nrows);
 	setContentPane(apanel);
 
 	setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("pixmaps/jattack.png")).getImage());
@@ -83,6 +92,53 @@ public class AttackFrame extends JFrame implements ActionListener {
     }
 
     public static void main (String[] args) {
-	new AttackFrame();
+	if (args.length > 0) {
+	    int i = 0;
+	    int NROWS = DEFAULT_ROWS;
+	    int NCOLUMNS = DEFAULT_COLUMNS;
+	    while (i < args.length) {
+		if (args[i].equals("-r")) {
+		    ++i;
+		    if (i < args.length) {
+			try {
+			    NROWS = Integer.parseInt(args[i]);
+			} catch (NumberFormatException ex) {
+			    System.err.println("Invalid rows!");
+			    System.exit(1);
+			}
+			if (NROWS < DEFAULT_ROWS) {
+			    System.err.println("Too few rows!");
+			    System.exit(1);
+			}
+		    } else {
+			System.err.println("Expecting an argument to -c!");
+			System.exit(1);
+		    }
+		} else if (args[i].equals("-c")) {
+		    ++i;
+		    if (i < args.length) {
+			try {
+			    NCOLUMNS = Integer.parseInt(args[i]);
+			} catch (NumberFormatException ex) {
+			    System.err.println("Invalid columns!");
+			    System.exit(1);
+			}
+			if (NCOLUMNS < DEFAULT_COLUMNS) {
+			    System.err.println("Too few columns!");
+			    System.exit(1);
+			}
+		    } else {
+			System.err.println("Expecting an argument to -c!");
+			System.exit(1);
+		    }
+		} else {
+		    break;
+		}
+		++i;
+	    }
+	    new AttackFrame(NCOLUMNS, NROWS);
+	} else {
+	    new AttackFrame();
+	}
     }
 }

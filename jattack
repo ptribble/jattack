@@ -35,4 +35,4 @@ case $1 in
 	exit 0
 	;;
 esac
-exec java -jar jattack.jar
+exec java -jar jattack.jar $*
