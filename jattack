@@ -1,16 +1,25 @@
 #!/bin/sh
 case $1 in
 '-build')
-	PATH=/usr/jdk/instances/jdk1.5.0/bin:$PATH
-	export PATH
-	javac uk/co/petertribble/jattack/*.java
+	javac -Xlint -Xlint:-serial uk/co/petertribble/jattack/*.java
 	jar -cmf jattack.manifest jattack.jar uk/co/petertribble/jattack/*.class pixmaps/jattack.png
 	rm uk/co/petertribble/jattack/*.class
 	exit 0
 	;;
 '-pmd')
-	pmd uk imports,unusedcode,coupling,migrating,typeresolution,sunsecure,finalizers,clone,braces
-	# basic
+	PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
+	PMDCATRULES="security"
+	RULESETS=""
+	for RULE in $PMDRULES
+	do
+	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
+	done
+	for RULE in $PMDCATRULES
+	do
+	    RULESETS="${RULESETS},category/java/${RULE}.xml"
+	done
+	RULESETS=`echo $RULESETS|sed s:,::`
+	pmd -d uk -R $RULESETS -version 1.5 -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
 	exit 0
 	;;
 '-package')
