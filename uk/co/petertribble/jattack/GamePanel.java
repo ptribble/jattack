@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2015 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2019 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -30,7 +30,6 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.awt.event.*;
 
 public class GamePanel extends JPanel implements ActionListener, MouseListener {
@@ -181,7 +180,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	    if (iwarn >= Colours.length) {
 		iwarn = 0;
 	    }
-	    bgcolor = Colours[iwarn];
+	    bgcolor = Colours[iwarn].darker();
 	} else {
 	    bgcolor = Colours[0];
 	}
@@ -449,8 +448,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     public void paint(Graphics g) {
 	Graphics2D g2 = (Graphics2D) g;
 	Dimension d = getSize();
-	g2.setPaint(bgcolor);
-	g2.fill(new Rectangle2D.Double(0.0d, 0.0d, d.width, d.height));
+	g2.setColor(bgcolor);
+	g2.fillRect(0, 0, d.width, d.height);
 	for (int i = 0; i < ncolumns; i++) {
 	    int istart = i*cellsize + 1;
 	    for (int j = 0; j < nrows; j++) {
@@ -462,12 +461,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		    jstart++;
 		    // highlight the currently clicked cell with a border
 		    if (i == colclick && j == rowclick) {
-			g2.setPaint(clickcolor);
-			g2.fill(new Rectangle2D.Double(istart-1, jstart-1, cellsize, cellsize));
+			g2.setColor(clickcolor);
+			g2.fillRect(istart-1, jstart-1, cellsize, cellsize);
 		    }
 		    // the partially visible row is shaded
-		    g2.setPaint((j == toprow) ? Colours[cells[i][j]].darker() : Colours[cells[i][j]]);
-		    g2.fill(new Rectangle2D.Double(istart, jstart, cellp, cellp));
+		    g2.setColor((j == toprow) ? Colours[cells[i][j]].darker() : Colours[cells[i][j]]);
+		    g2.fill3DRect(istart, jstart, cellp, cellp, true);
 		}
 	    }
 	}

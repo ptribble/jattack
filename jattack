@@ -8,7 +8,7 @@ case $1 in
 	;;
 '-pmd')
 	PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
-	PMDCATRULES="security"
+	PMDCATRULES="security performance"
 	RULESETS=""
 	for RULE in $PMDRULES
 	do
