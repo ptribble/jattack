@@ -56,7 +56,7 @@ public class InfoPanel extends JPanel {
 	msgLabel = new JLabel();
 	msgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	add(msgLabel);
-	add(Box.createRigidArea(new Dimension(80,1)));
+	add(Box.createRigidArea(new Dimension(80, 1)));
 	setSize(400, 400);
     }
 

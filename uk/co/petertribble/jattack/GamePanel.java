@@ -214,7 +214,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	int iscore = nscore;
 	while (cells[i][j] == val) {
 	    shuffleDown(i, j);
-	    iscore *=2;
+	    iscore *= 2;
 	}
 	addScore(iscore);
 	checkAll();
@@ -375,11 +375,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	if (rownew == toprow) {
 	    return;
 	}
-	// so, we know where we are. if the previous click was valid, and 
+	// so, we know where we are. if the previous click was valid, and
 	// we're on the same row, and we're on neighbouring columns, swap the
 	// cells
 	if (rowclick == rownew) {
-	    if (colclick == colnew+1 || colclick == colnew-1 ) {
+	    if (colclick == colnew+1 || colclick == colnew-1) {
 		// swap cells
 		int itmp = cells[colclick][rowclick];
 		cells[colclick][rowclick] = cells[colnew][rownew];
@@ -465,7 +465,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 			g2.fillRect(istart-1, jstart-1, cellsize, cellsize);
 		    }
 		    // the partially visible row is shaded
-		    g2.setColor((j == toprow) ? Colours[cells[i][j]].darker() : Colours[cells[i][j]]);
+		    g2.setColor((j == toprow) ? Colours[cells[i][j]].darker()
+				: Colours[cells[i][j]]);
 		    g2.fill3DRect(istart, jstart, cellp, cellp, true);
 		}
 	    }

@@ -91,7 +91,7 @@ public class AttackFrame extends JFrame implements ActionListener {
 	}
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 	if (args.length > 0) {
 	    int i = 0;
 	    int NROWS = DEFAULT_ROWS;
