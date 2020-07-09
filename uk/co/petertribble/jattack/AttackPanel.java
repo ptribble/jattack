@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2015 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2020 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -29,7 +29,7 @@ import javax.swing.BoxLayout;
 
 public class AttackPanel extends JPanel {
 
-    private GamePanel gpanel;
+    private final GamePanel gpanel;
 
     public AttackPanel(int ncolumns, int nrows) {
 	setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));

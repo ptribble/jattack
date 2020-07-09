@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2015 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2020 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -34,9 +34,9 @@ import javax.swing.BorderFactory;
 
 public class InfoPanel extends JPanel {
 
-    private JLabel scoreLabel;
-    private JLabel speedLabel;
-    private JLabel msgLabel;
+    private final JLabel scoreLabel;
+    private final JLabel speedLabel;
+    private final JLabel msgLabel;
 
     public InfoPanel() {
 	setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));

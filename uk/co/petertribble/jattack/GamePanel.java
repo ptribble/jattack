@@ -36,10 +36,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     private static final int START_DELAY = 401;
     private static final int START_LEVEL = 1;
 
-    private int ncolumns;
-    private int nrows;
-    private int cellsize = 24;
-    private int cellp = cellsize - 2;
+    private final int ncolumns;
+    private final int nrows;
+    private static final int cellsize = 24;
+    private final int cellp = cellsize - 2;
     private int[][] cells;
     private int toprow;
     private int partrow;
@@ -54,11 +54,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     private int multimatch;
 
     // the original has 5: diamonds, circles, triangles, hearts, stars
-    private Color[] Colours = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.PINK};
+    private final Color[] Colours = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.PINK};
     private Color bgcolor = Color.BLACK;
-    private Color clickcolor = Color.WHITE;
+    private final Color clickcolor = Color.WHITE;
 
-    private InfoPanel ipanel;
+    private final InfoPanel ipanel;
 
     public GamePanel(InfoPanel ipanel, int ncolumns, int nrows) {
 	this.ipanel = ipanel;
