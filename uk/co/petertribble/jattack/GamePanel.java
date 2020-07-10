@@ -248,10 +248,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     }
 
     private void upspeed() {
-	level++;
 	delay -= 3;
 	timer.setDelay(delay);
-	ipanel.setSpeed(level);
+	ipanel.setSpeed(++level);
     }
 
     private void fill(int irow) {
@@ -329,8 +328,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     }
 
     private void addScore(int i) {
-	score += i*(multimatch + 1);
 	multimatch++;
+	score += i*multimatch;
 	ipanel.setScore(score);
     }
 
