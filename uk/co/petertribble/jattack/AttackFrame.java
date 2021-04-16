@@ -97,7 +97,7 @@ public class AttackFrame extends JFrame implements ActionListener {
 	    int NROWS = DEFAULT_ROWS;
 	    int NCOLUMNS = DEFAULT_COLUMNS;
 	    while (i < args.length) {
-		if (args[i].equals("-r")) {
+		if ("-r".equals(args[i])) {
 		    ++i;
 		    if (i < args.length) {
 			try {
@@ -114,7 +114,7 @@ public class AttackFrame extends JFrame implements ActionListener {
 			System.err.println("Expecting an argument to -c!");
 			System.exit(1);
 		    }
-		} else if (args[i].equals("-c")) {
+		} else if ("-c".equals(args[i])) {
 		    ++i;
 		    if (i < args.length) {
 			try {
