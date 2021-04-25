@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     private int rowclick = -2;
     private int colclick = -2;
     private int score;
-    private boolean active;
+    boolean active;
     private int iwarn;
     private int multimatch;
 
@@ -123,7 +123,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
      * is lost. If not, we move the row counter down one, reset the partial
      * row, populate the next row, and increase the speed.
      */
-    private void step() {
+    void step() {
 	multimatch = 0;
 	if (partrow == 0) {
 	    fill(toprow);
