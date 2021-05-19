@@ -304,8 +304,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	}
 	// vertical rows
 	for (int i = 0; i < ncolumns; i++) {
-	    for (int j = 0; j < nrows; j++) {
-		// for (int j = nrows - 1; j >= 0; j--) {
+	    //for (int j = 0; j < nrows; j++) {
+	    for (int j = nrows - 1; j >= 0; j--) {
 		if (j == toprow) {
 		    continue;
 		}
@@ -377,58 +377,57 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	// so, we know where we are. if the previous click was valid, and
 	// we're on the same row, and we're on neighbouring columns, swap the
 	// cells
-	if (rowclick == rownew) {
-	    if (colclick == colnew+1 || colclick == colnew-1) {
-		// swap cells
-		int itmp = cells[colclick][rowclick];
-		cells[colclick][rowclick] = cells[colnew][rownew];
-		cells[colnew][rownew] = itmp;
-		// if an empty cell, shuffle down anything above it
-		if (cells[colclick][rowclick] == 0) {
-		    shuffleDown(colclick, rowclick);
-		}
-		if (cells[colnew][rownew] == 0) {
-		    shuffleDown(colnew, rownew);
-		}
-		// if we end up over an empty cell, drop down
-		int rowbelow = rownew + 1;
-		if (rowbelow == nrows) {
-		    rowbelow = 0;
-		}
-		while (rowbelow != toprow && cells[colnew][rowbelow] == 0) {
-		    cells[colnew][rowbelow] = cells[colnew][rownew];
-		    cells[colnew][rownew] = 0;
-		    rowbelow++;
-		    rownew++;
-		    if (rowbelow == nrows) {
-			rowbelow = 0;
-		    }
-		    if (rownew == nrows) {
-			rownew = 0;
-		    }
-		}
-		rowbelow = rowclick + 1;
-		if (rowbelow == nrows) {
-		    rowbelow = 0;
-		}
-		while (rowbelow != toprow && cells[colclick][rowbelow] == 0) {
-		    cells[colclick][rowbelow] = cells[colclick][rowclick];
-		    cells[colclick][rowclick] = 0;
-		    rowbelow++;
-		    rowclick++;
-		    if (rowbelow == nrows) {
-			rowbelow = 0;
-		    }
-		    if (rowclick == nrows) {
-			rowclick = 0;
-		    }
-		}
-		repaint();
-		rowclick = -2;
-		colclick = -2;
-		checkAll();
-		return;
+	if (rowclick == rownew &&
+	    (colclick == colnew+1 || colclick == colnew-1)) {
+	    // swap cells
+	    int itmp = cells[colclick][rowclick];
+	    cells[colclick][rowclick] = cells[colnew][rownew];
+	    cells[colnew][rownew] = itmp;
+	    // if an empty cell, shuffle down anything above it
+	    if (cells[colclick][rowclick] == 0) {
+		shuffleDown(colclick, rowclick);
 	    }
+	    if (cells[colnew][rownew] == 0) {
+		shuffleDown(colnew, rownew);
+	    }
+	    // if we end up over an empty cell, drop down
+	    int rowbelow = rownew + 1;
+	    if (rowbelow == nrows) {
+		rowbelow = 0;
+	    }
+	    while (rowbelow != toprow && cells[colnew][rowbelow] == 0) {
+		cells[colnew][rowbelow] = cells[colnew][rownew];
+		cells[colnew][rownew] = 0;
+		rowbelow++;
+		rownew++;
+		if (rowbelow == nrows) {
+		    rowbelow = 0;
+		}
+		if (rownew == nrows) {
+		    rownew = 0;
+		}
+	    }
+	    rowbelow = rowclick + 1;
+	    if (rowbelow == nrows) {
+		rowbelow = 0;
+	    }
+	    while (rowbelow != toprow && cells[colclick][rowbelow] == 0) {
+		cells[colclick][rowbelow] = cells[colclick][rowclick];
+		cells[colclick][rowclick] = 0;
+		rowbelow++;
+		rowclick++;
+		if (rowbelow == nrows) {
+		    rowbelow = 0;
+		}
+		if (rowclick == nrows) {
+		    rowclick = 0;
+		}
+	    }
+	    repaint();
+	    rowclick = -2;
+	    colclick = -2;
+	    checkAll();
+	    return;
 	}
 	// save this one for next time
 	rowclick = rownew;
@@ -436,7 +435,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     }
 
     // ActionListener
-
     public void actionPerformed(ActionEvent e) {
 	if (active) {
 	    step();
