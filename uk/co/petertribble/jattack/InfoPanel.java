@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2020 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2021 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -32,12 +32,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 
+/**
+ * The information panel, displayed to the right of the game, showing
+ * the current spped and score.
+ */
 public class InfoPanel extends JPanel {
 
+    /**
+     * The JLabel to display the current score.
+     */
     private final JLabel scoreLabel;
+    /**
+     * The JLabel to display the current speed.
+     */
     private final JLabel speedLabel;
+    /**
+     * The JLabel to display an arbitrary message.
+     */
     private final JLabel msgLabel;
 
+    /**
+     * Create a new InfoPanel.
+     */
     public InfoPanel() {
 	setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 	JLabel tscoreLabel = new JLabel("Score:");
@@ -60,14 +76,29 @@ public class InfoPanel extends JPanel {
 	setSize(400, 400);
     }
 
+    /**
+     * Update the speed label.
+     *
+     * @param speed the current speed
+     */
     public void setSpeed(int speed) {
 	speedLabel.setText(Integer.toString(speed));
     }
 
+    /**
+     * Update the score label.
+     *
+     * @param score the current score
+     */
     public void setScore(int score) {
 	scoreLabel.setText(Integer.toString(score));
     }
 
+    /**
+     * Update the displayed message.
+     *
+     * @param s the message text to display
+     */
     public void setMessage(String s) {
 	msgLabel.setText(s);
     }

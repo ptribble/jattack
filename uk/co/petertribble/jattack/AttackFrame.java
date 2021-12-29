@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2015 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2021 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -31,13 +31,23 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.event.*;
 
+/**
+ * The main Frame to display a Jattack game. Implements the menu bar and holds
+ * the game in a panel.
+ */
 public class AttackFrame extends JFrame implements ActionListener {
 
-    /*
-     * Menu buttons.
+    /**
+     * A menu item for Exit.
      */
     private JMenuItem exitItem;
+    /**
+     * A menu item for New game.
+     */
     private JMenuItem newItem;
+    /**
+     * The panel holding the game.
+     */
     private AttackPanel apanel;
 
     /*
@@ -46,10 +56,19 @@ public class AttackFrame extends JFrame implements ActionListener {
     private static final int DEFAULT_COLUMNS = 6;
     private static final int DEFAULT_ROWS = 9;
 
+    /**
+     * Create a Frame containing the game at the default size.
+     */
     public AttackFrame() {
 	this(DEFAULT_COLUMNS, DEFAULT_ROWS);
     }
 
+    /**
+     * Create a Frame containing the game at the requested size.
+     *
+     * @param ncolumns the desired number of rows
+     * @param nrows the desired number of rows
+     */
     public AttackFrame(int ncolumns, int nrows) {
 	super("JAttack");
 
@@ -91,6 +110,12 @@ public class AttackFrame extends JFrame implements ActionListener {
 	}
     }
 
+    /**
+     * Run a new JAttack game. Allows the number of rows to be
+     * specified with -r, and the number of columns with -c.
+     *
+     * @param args the command line arguments.
+     */
     public static void main(String[] args) {
 	if (args.length > 0) {
 	    int i = 0;

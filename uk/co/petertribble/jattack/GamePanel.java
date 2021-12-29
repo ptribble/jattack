@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2019 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2021 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -32,34 +32,108 @@ import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * The visible part of the game.
+ */
 public class GamePanel extends JPanel implements ActionListener, MouseListener {
+    /**
+     * The starting delay, inverse of speed.
+     */
     private static final int START_DELAY = 401;
+    /**
+     * The strating level.
+     */
     private static final int START_LEVEL = 1;
 
+    /**
+     * The number of columns in the game.
+     */
     private final int ncolumns;
+    /**
+     * The number of rows in the game.
+     */
     private final int nrows;
+    /**
+     * The size of each cell.
+     */
     private static final int cellsize = 24;
+    /**
+     * The size of the cell body, allowing a single pixel border.
+     */
     private final int cellp = cellsize - 2;
+    /**
+     * An array to hold the cells.
+     */
     private int[][] cells;
+    /**
+     * The row currently at the top of the game.
+     */
     private int toprow;
+    /**
+     * The row coming into view and partly visible.
+     */
     private int partrow;
+    /**
+     * The current level.
+     */
     private int level = START_LEVEL;
+    /**
+     * The current delay, inverse to speed.
+     */
     private int delay = START_DELAY;
+    /**
+     * A Timer to update the game.
+     */
     private Timer timer;
+    /**
+     * The row last clicked on.
+     */
     private int rowclick = -2;
+    /**
+     * The column last clicked on.
+     */
     private int colclick = -2;
+    /**
+     * The current score.
+     */
     private int score;
+    /**
+     * Is the game active (as opposed to stopped).
+     */
     boolean active;
+    /**
+     */
     private int iwarn;
+    /**
+     */
     private int multimatch;
 
-    // the original has 5: diamonds, circles, triangles, hearts, stars
+    /**
+     * The possible colors of each cell.
+     * The original has 5: diamonds, circles, triangles, hearts, stars
+     */
     private final Color[] Colours = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.PINK};
+    /**
+     * The background color.
+     */
     private Color bgcolor = Color.BLACK;
+    /**
+     * The color of a border put around a clicked cell..
+     */
     private final Color clickcolor = Color.WHITE;
 
+    /**
+     * An InfoPanel to be updated with the game's progress.
+     */
     private final InfoPanel ipanel;
 
+    /**
+     * Create a game panel.
+     *
+     * @param ipanel and InfoPanel showing information on game progress
+     * @param ncolumns the desired number of rows
+     * @param nrows the desired number of rows
+     */
     public GamePanel(InfoPanel ipanel, int ncolumns, int nrows) {
 	this.ipanel = ipanel;
 	this.ncolumns = ncolumns;
@@ -104,6 +178,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	return (int) Math.floor(dl*Math.random() + 1.5d);
     }
 
+    /**
+     * A multiple step.
+     */
     Action mstep = new AbstractAction() {
 	public void actionPerformed(ActionEvent e) {
 	    if (active) {
@@ -259,6 +336,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	}
     }
 
+    /**
+     * Request a new game.
+     */
     public void newGame() {
 	stopLoop();
 	level = START_LEVEL;
