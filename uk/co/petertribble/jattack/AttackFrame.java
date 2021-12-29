@@ -110,6 +110,11 @@ public class AttackFrame extends JFrame implements ActionListener {
 	}
     }
 
+    private static void bailOut(String s) {
+	System.err.println(s); //NOPMD
+	System.exit(1);
+    }
+    
     /**
      * Run a new JAttack game. Allows the number of rows to be
      * specified with -r, and the number of columns with -c.
@@ -128,16 +133,13 @@ public class AttackFrame extends JFrame implements ActionListener {
 			try {
 			    NROWS = Integer.parseInt(args[i]);
 			} catch (NumberFormatException ex) {
-			    System.err.println("Invalid rows!");
-			    System.exit(1);
+			    bailOut("Invalid rows!");
 			}
 			if (NROWS < DEFAULT_ROWS) {
-			    System.err.println("Too few rows!");
-			    System.exit(1);
+			    bailOut("Too few rows!");
 			}
 		    } else {
-			System.err.println("Expecting an argument to -c!");
-			System.exit(1);
+			bailOut("Expecting an argument to -c!");
 		    }
 		} else if ("-c".equals(args[i])) {
 		    ++i;
@@ -145,16 +147,13 @@ public class AttackFrame extends JFrame implements ActionListener {
 			try {
 			    NCOLUMNS = Integer.parseInt(args[i]);
 			} catch (NumberFormatException ex) {
-			    System.err.println("Invalid columns!");
-			    System.exit(1);
+			    bailOut("Invalid columns!");
 			}
 			if (NCOLUMNS < DEFAULT_COLUMNS) {
-			    System.err.println("Too few columns!");
-			    System.exit(1);
+			    bailOut("Too few columns!");
 			}
 		    } else {
-			System.err.println("Expecting an argument to -c!");
-			System.exit(1);
+			bailOut("Expecting an argument to -c!");
 		    }
 		} else {
 		    break;
