@@ -1,12 +1,18 @@
 #!/bin/sh
 case $1 in
-'-build')
+build|-build)
 	javac -Xlint -Xlint:-serial uk/co/petertribble/jattack/*.java
 	jar -cmf jattack.manifest jattack.jar uk/co/petertribble/jattack/*.class pixmaps/jattack.png
 	rm uk/co/petertribble/jattack/*.class
 	exit 0
 	;;
-'-pmd')
+javadoc|-javadoc)
+	rm -fr javadoc
+	mkdir javadoc
+	javadoc -Xdoclint:all -d javadoc uk.co.petertribble.jattack
+	exit 0
+	;;
+pmd|-pmd)
 	PMDRULES="basic braces clone empty finalizers imports migrating strictexception strings sunsecure typeresolution unnecessary unusedcode"
 	PMDCATRULES="security performance"
 	RULESETS=""
@@ -22,7 +28,7 @@ case $1 in
 	pmd -d uk -R $RULESETS -version 1.8 2>/dev/null
 	exit 0
 	;;
-'-package')
+package|-package)
 	./pkg/mkproto > pp
 	pkgmk -d /tmp -f pp -r `pwd` TRIBjattack
 	pkgtrans -s /tmp /tmp/TRIBjattack.pkg TRIBjattack
