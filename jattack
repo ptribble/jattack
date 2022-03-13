@@ -16,7 +16,8 @@ pmd|-pmd)
 	PMDRULES="basic braces clone empty finalizers imports migrating strictexception strings sunsecure typeresolution unnecessary unusedcode"
 	PMDCATRULES="security bestpractices performance"
 	RULESETS=""
-	for RULE in $PMDRULES
+	shift
+	for RULE in $PMDRULES $*
 	do
 	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
 	done
