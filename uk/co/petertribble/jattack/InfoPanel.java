@@ -19,18 +19,18 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2021 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2022 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
 
 /**
  * The information panel, displayed to the right of the game, showing

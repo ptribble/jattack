@@ -19,17 +19,17 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2021 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2022 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
 
+import java.awt.event.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import java.awt.event.*;
 
 /**
  * The main Frame to display a Jattack game. Implements the menu bar and holds

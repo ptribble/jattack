@@ -19,18 +19,18 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2021 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2022 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
-import java.awt.*;
-import java.awt.event.*;
 
 /**
  * The visible part of the game.
