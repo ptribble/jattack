@@ -182,6 +182,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
      * A multiple step.
      */
     Action mstep = new AbstractAction() {
+	@Override
 	public void actionPerformed(ActionEvent e) {
 	    if (active) {
 		step();
@@ -415,18 +416,23 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
     // MouseListener
 
+    @Override
     public void mouseClicked(MouseEvent e) {
     }
 
+    @Override
     public void mouseReleased(MouseEvent e) {
     }
 
+    @Override
     public void mouseEntered(MouseEvent e) {
     }
 
+    @Override
     public void mouseExited(MouseEvent e) {
     }
 
+    @Override
     public void mousePressed(MouseEvent e) {
 	if (!active) {
 	    return;
@@ -515,6 +521,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     }
 
     // ActionListener
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (active) {
 	    step();
