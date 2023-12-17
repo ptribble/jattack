@@ -19,3 +19,6 @@ Changes in 1.2 are related to packaging
 In 1.3, the clicked cell is highlighted
 
 In 1.4, the cells have a slight 3d effect
+
+In 1.5 the code is cleaned up a bit, and longer vertical runs are handled
+properly
