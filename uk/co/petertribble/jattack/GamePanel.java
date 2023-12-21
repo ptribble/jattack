@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
      */
     private static final int START_DELAY = 401;
     /**
-     * The strating level.
+     * The starting level.
      */
     private static final int START_LEVEL = 1;
 
