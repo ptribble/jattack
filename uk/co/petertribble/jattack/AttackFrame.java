@@ -116,7 +116,7 @@ public class AttackFrame extends JFrame implements ActionListener {
 	System.err.println(s); //NOPMD
 	System.exit(1);
     }
-    
+
     /**
      * Run a new JAttack game. Allows the number of rows to be
      * specified with -r, and the number of columns with -c.
