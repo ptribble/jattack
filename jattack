@@ -13,15 +13,10 @@ javadoc|-javadoc)
 	exit 0
 	;;
 pmd|-pmd)
-	PMDRULES="basic braces clone empty finalizers imports migrating strictexception strings sunsecure typeresolution unnecessary unusedcode"
-	PMDCATRULES="security bestpractices performance"
+	PMDCATRULES="security bestpractices performance multithreading"
 	RULESETS=""
 	shift
-	for RULE in $PMDRULES $*
-	do
-	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
-	done
-	for RULE in $PMDCATRULES
+	for RULE in $PMDCATRULES $*
 	do
 	    RULESETS="${RULESETS},category/java/${RULE}.xml"
 	done
