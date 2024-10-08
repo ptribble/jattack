@@ -1,11 +1,12 @@
 #!/bin/sh
 #
+# SPDX-License-Identifier: CDDL-1.0
+#
 # generate a prototype file for input to pkgmk
 #
 # feed to pkgmk like so:
 #  pkgmk -d /tmp -f tt -r `pwd` TRIBjattack
 #
-JARDIR=usr/share/jattack
 OWNER="root bin"
 SYSOWNER="root sys"
 
