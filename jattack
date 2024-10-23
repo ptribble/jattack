@@ -17,13 +17,12 @@ javadoc|-javadoc)
 	;;
 pmd|-pmd)
 	PMDCATRULES="security bestpractices performance multithreading"
-	RULESETS=""
+	RULESETS="rulesets/java/quickstart.xml"
 	shift
 	for RULE in $PMDCATRULES "$@"
 	do
 	    RULESETS="${RULESETS},category/java/${RULE}.xml"
 	done
-	RULESETS=${RULESETS/,/}
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi

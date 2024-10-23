@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2022 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2024 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     /**
      * The size of the cell body, allowing a single pixel border.
      */
-    private final int cellp = cellsize - 2;
+    private static final int cellp = cellsize - 2;
     /**
      * An array to hold the cells.
      */
@@ -120,7 +120,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     /**
      * The color of a border put around a clicked cell..
      */
-    private final Color clickcolor = Color.WHITE;
+    private static final Color clickcolor = Color.WHITE;
 
     /**
      * An InfoPanel to be updated with the game's progress.
@@ -418,18 +418,22 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+	/* Empty implementation for MouseListener interface. */
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+	/* Empty implementation for MouseListener interface. */
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
+	/* Empty implementation for MouseListener interface. */
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+	/* Empty implementation for MouseListener interface. */
     }
 
     @Override

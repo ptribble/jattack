@@ -19,12 +19,11 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2022 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2024 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -57,20 +56,20 @@ public class InfoPanel extends JPanel {
     public InfoPanel() {
 	setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 	JLabel tscoreLabel = new JLabel("Score:");
-	tscoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	tscoreLabel.setAlignmentX(CENTER_ALIGNMENT);
 	add(tscoreLabel);
 	scoreLabel = new JLabel("0");
-	scoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
 	add(scoreLabel);
 	JLabel tspeedLabel = new JLabel("Speed:");
-	tspeedLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	tspeedLabel.setAlignmentX(CENTER_ALIGNMENT);
 	add(tspeedLabel);
 	speedLabel = new JLabel("0");
-	speedLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	speedLabel.setAlignmentX(CENTER_ALIGNMENT);
 	add(speedLabel);
 	setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	msgLabel = new JLabel();
-	msgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	msgLabel.setAlignmentX(CENTER_ALIGNMENT);
 	add(msgLabel);
 	add(Box.createRigidArea(new Dimension(80, 1)));
 	setSize(400, 400);

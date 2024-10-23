@@ -19,7 +19,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2011-2022 Peter C Tribble <peter.tribble@gmail.com>
+ * Copyright 2011-2024 Peter C Tribble <peter.tribble@gmail.com>
  */
 
 package uk.co.petertribble.jattack;
@@ -72,7 +72,7 @@ public class AttackFrame extends JFrame implements ActionListener {
     public AttackFrame(int ncolumns, int nrows) {
 	super("JAttack");
 
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 
 	JMenu jmf = new JMenu("File");
 	jmf.setMnemonic(KeyEvent.VK_F);
@@ -96,7 +96,7 @@ public class AttackFrame extends JFrame implements ActionListener {
 	setVisible(true);
     }
 
-    class winExit extends WindowAdapter {
+    class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    System.exit(0);
@@ -105,9 +105,9 @@ public class AttackFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-	if (e.getSource() == exitItem) {
+	if (exitItem.equals(e.getSource())) {
 	    System.exit(0);
-	} else if (e.getSource() == newItem) {
+	} else if (newItem.equals(e.getSource())) {
 	    apanel.newGame();
 	}
     }
@@ -126,18 +126,18 @@ public class AttackFrame extends JFrame implements ActionListener {
     public static void main(String[] args) {
 	if (args.length > 0) {
 	    int i = 0;
-	    int NROWS = DEFAULT_ROWS;
-	    int NCOLUMNS = DEFAULT_COLUMNS;
+	    int chosenrows = DEFAULT_ROWS;
+	    int chosencolumns = DEFAULT_COLUMNS;
 	    while (i < args.length) {
 		if ("-r".equals(args[i])) {
 		    ++i;
 		    if (i < args.length) {
 			try {
-			    NROWS = Integer.parseInt(args[i]);
+			    chosenrows = Integer.parseInt(args[i]);
 			} catch (NumberFormatException ex) {
 			    bailOut("Invalid rows!");
 			}
-			if (NROWS < DEFAULT_ROWS) {
+			if (chosenrows < DEFAULT_ROWS) {
 			    bailOut("Too few rows!");
 			}
 		    } else {
@@ -147,11 +147,11 @@ public class AttackFrame extends JFrame implements ActionListener {
 		    ++i;
 		    if (i < args.length) {
 			try {
-			    NCOLUMNS = Integer.parseInt(args[i]);
+			    chosencolumns = Integer.parseInt(args[i]);
 			} catch (NumberFormatException ex) {
 			    bailOut("Invalid columns!");
 			}
-			if (NCOLUMNS < DEFAULT_COLUMNS) {
+			if (chosencolumns < DEFAULT_COLUMNS) {
 			    bailOut("Too few columns!");
 			}
 		    } else {
@@ -162,7 +162,7 @@ public class AttackFrame extends JFrame implements ActionListener {
 		}
 		++i;
 	    }
-	    new AttackFrame(NCOLUMNS, NROWS);
+	    new AttackFrame(chosencolumns, chosenrows);
 	} else {
 	    new AttackFrame();
 	}
