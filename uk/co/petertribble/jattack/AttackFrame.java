@@ -49,11 +49,13 @@ public class AttackFrame extends JFrame implements ActionListener {
      * The panel holding the game.
      */
     private AttackPanel apanel;
-
-    /*
-     * Default sizes.
+    /**
+     * The default number of columns. Override with the -c cli flag.
      */
     private static final int DEFAULT_COLUMNS = 6;
+    /**
+     * The default number of rows. Override with the -r cli flag.
+     */
     private static final int DEFAULT_ROWS = 9;
 
     /**
@@ -91,7 +93,9 @@ public class AttackFrame extends JFrame implements ActionListener {
 	apanel = new AttackPanel(ncolumns, nrows);
 	setContentPane(apanel);
 
-	setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("pixmaps/jattack.png")).getImage());
+	setIconImage(new ImageIcon(this.getClass().getClassLoader()
+				   .getResource("pixmaps/jattack.png"))
+		     .getImage());
 	pack();
 	setVisible(true);
     }

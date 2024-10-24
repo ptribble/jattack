@@ -56,11 +56,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     /**
      * The size of each cell.
      */
-    private static final int cellsize = 24;
+    private static final int CELLSIZE = 24;
     /**
      * The size of the cell body, allowing a single pixel border.
      */
-    private static final int cellp = cellsize - 2;
+    private static final int CELLP = CELLSIZE - 2;
     /**
      * An array to hold the cells.
      */
@@ -112,7 +112,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
      * The possible colors of each cell.
      * The original has 5: diamonds, circles, triangles, hearts, stars
      */
-    private final Color[] Colours = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.PINK};
+    private static final Color[] COLOURS = {Color.RED,
+					    Color.BLUE,
+					    Color.GREEN,
+					    Color.YELLOW,
+					    Color.ORANGE,
+					    Color.PINK};
     /**
      * The background color.
      */
@@ -120,7 +125,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     /**
      * The color of a border put around a clicked cell..
      */
-    private static final Color clickcolor = Color.WHITE;
+    private static final Color CLICKCOLOR = Color.WHITE;
 
     /**
      * An InfoPanel to be updated with the game's progress.
@@ -139,7 +144,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	this.ncolumns = ncolumns;
 	this.nrows = nrows;
 	cells = new int[ncolumns][nrows];
-	Dimension gdim = new Dimension(ncolumns*cellsize, nrows*cellsize);
+	Dimension gdim = new Dimension(ncolumns*CELLSIZE, nrows*CELLSIZE);
 	setMinimumSize(gdim);
 	setPreferredSize(gdim);
 	setMaximumSize(gdim);
@@ -174,7 +179,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     }
 
     private int newCell() {
-	double dl = (double) Colours.length - 2;
+	double dl = (double) COLOURS.length - 2;
 	return (int) Math.floor(dl*Math.random() + 1.5d);
     }
 
@@ -207,7 +212,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	    fill(toprow);
 	}
 	partrow++;
-	if (partrow == cellsize) {
+	if (partrow == CELLSIZE) {
 	    partrow = 0;
 	    toprow++;
 	    if (toprow == nrows) {
@@ -255,12 +260,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	}
 	if (lost > 0) {
 	    iwarn++;
-	    if (iwarn >= Colours.length) {
+	    if (iwarn >= COLOURS.length) {
 		iwarn = 0;
 	    }
-	    bgcolor = Colours[iwarn].darker();
+	    bgcolor = COLOURS[iwarn].darker();
 	} else {
-	    bgcolor = Colours[0];
+	    bgcolor = COLOURS[0];
 	}
     }
 
@@ -344,7 +349,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	stopLoop();
 	level = START_LEVEL;
 	delay = START_DELAY;
-	bgcolor = Colours[0];
+	bgcolor = COLOURS[0];
 	toprow = 0;
 	partrow = 0;
 	populate(3);
@@ -376,9 +381,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		if (j == toprow) {
 		    continue;
 		}
-		if (cells[i][j] != 0 &&
-			    cells[i][j] == cells[i+1][j] &&
-			    cells[i][j] == cells[i+2][j]) {
+		if (cells[i][j] != 0
+			    && cells[i][j] == cells[i+1][j]
+			    && cells[i][j] == cells[i+2][j]) {
 		    clearHmatch(i, j, 10);
 		}
 	    }
@@ -399,9 +404,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		if (row2 == -1) {
 		    row2 = nrows - 1;
 		}
-		if (cells[i][j] != 0 &&
-			    cells[i][j] == cells[i][row1] &&
-			    cells[i][j] == cells[i][row2]) {
+		if (cells[i][j] != 0
+			    && cells[i][j] == cells[i][row1]
+			    && cells[i][j] == cells[i][row2]) {
 		    clearVmatch(i, j, 10);
 		}
 	    }
@@ -446,16 +451,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	int x = e.getX();
 	int y = e.getY();
 	for (int i = 0; i < ncolumns; i++) {
-	    int istart = i*cellsize;
-	    if (x >= istart && x < (istart+cellsize)) {
+	    int istart = i*CELLSIZE;
+	    if (x >= istart && x < (istart+CELLSIZE)) {
 		colnew = i;
 	    }
 	    for (int j = 0; j < nrows; j++) {
-		int jstart = (j-toprow)*cellsize - partrow;
+		int jstart = (j-toprow)*CELLSIZE - partrow;
 		if (jstart < 0) {
-		    jstart += nrows*cellsize;
+		    jstart += nrows*CELLSIZE;
 		}
-		if (y >= jstart && y < (jstart+cellsize)) {
+		if (y >= jstart && y < (jstart+CELLSIZE)) {
 		    rownew = j;
 		}
 	    }
@@ -467,8 +472,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	// so, we know where we are. if the previous click was valid, and
 	// we're on the same row, and we're on neighbouring columns, swap the
 	// cells
-	if (rowclick == rownew &&
-	    (colclick == colnew+1 || colclick == colnew-1)) {
+	if (rowclick == rownew
+	        && (colclick == colnew+1 || colclick == colnew-1)) {
 	    // swap cells
 	    int itmp = cells[colclick][rowclick];
 	    cells[colclick][rowclick] = cells[colnew][rownew];
@@ -539,23 +544,23 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	g2.setColor(bgcolor);
 	g2.fillRect(0, 0, d.width, d.height);
 	for (int i = 0; i < ncolumns; i++) {
-	    int istart = i*cellsize + 1;
+	    int istart = i*CELLSIZE + 1;
 	    for (int j = 0; j < nrows; j++) {
 		if (cells[i][j] > 0) {
-		    int jstart = (j-toprow)*cellsize - partrow;
+		    int jstart = (j-toprow)*CELLSIZE - partrow;
 		    if (jstart < 0) {
-			jstart += nrows*cellsize;
+			jstart += nrows*CELLSIZE;
 		    }
 		    jstart++;
 		    // highlight the currently clicked cell with a border
 		    if (i == colclick && j == rowclick) {
-			g2.setColor(clickcolor);
-			g2.fillRect(istart-1, jstart-1, cellsize, cellsize);
+			g2.setColor(CLICKCOLOR);
+			g2.fillRect(istart-1, jstart-1, CELLSIZE, CELLSIZE);
 		    }
 		    // the partially visible row is shaded
-		    g2.setColor((j == toprow) ? Colours[cells[i][j]].darker()
-				: Colours[cells[i][j]]);
-		    g2.fill3DRect(istart, jstart, cellp, cellp, true);
+		    g2.setColor((j == toprow) ? COLOURS[cells[i][j]].darker()
+				: COLOURS[cells[i][j]]);
+		    g2.fill3DRect(istart, jstart, CELLP, CELLP, true);
 		}
 	    }
 	}
