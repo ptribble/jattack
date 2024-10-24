@@ -37,6 +37,8 @@ import javax.swing.JMenuItem;
  */
 public class AttackFrame extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A menu item for Exit.
      */

@@ -32,6 +32,8 @@ import javax.swing.JPanel;
  */
 public class AttackPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * The panel containing the game.
      */

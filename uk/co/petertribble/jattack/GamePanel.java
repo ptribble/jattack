@@ -36,6 +36,9 @@ import javax.swing.Timer;
  * The visible part of the game.
  */
 public class GamePanel extends JPanel implements ActionListener, MouseListener {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * The starting delay, inverse of speed.
      */
