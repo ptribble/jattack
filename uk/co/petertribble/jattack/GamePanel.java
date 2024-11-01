@@ -24,8 +24,14 @@
 
 package uk.co.petertribble.jattack;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JPanel;
@@ -35,7 +41,8 @@ import javax.swing.Timer;
 /**
  * The visible part of the game.
  */
-public class GamePanel extends JPanel implements ActionListener, MouseListener {
+public final class GamePanel extends JPanel implements ActionListener,
+						       MouseListener {
 
     private static final long serialVersionUID = 1L;
 
@@ -138,14 +145,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
     /**
      * Create a game panel.
      *
-     * @param ipanel and InfoPanel showing information on game progress
-     * @param ncolumns the desired number of rows
-     * @param nrows the desired number of rows
+     * @param nipanel and InfoPanel showing information on game progress
+     * @param nncolumns the desired number of rows
+     * @param nnrows the desired number of rows
      */
-    public GamePanel(InfoPanel ipanel, int ncolumns, int nrows) {
-	this.ipanel = ipanel;
-	this.ncolumns = ncolumns;
-	this.nrows = nrows;
+    public GamePanel(InfoPanel nipanel, int nncolumns, int nnrows) {
+	ipanel = nipanel;
+	ncolumns = nncolumns;
+	nrows = nnrows;
 	cells = new int[ncolumns][nrows];
 	Dimension gdim = new Dimension(ncolumns*CELLSIZE, nrows*CELLSIZE);
 	setMinimumSize(gdim);

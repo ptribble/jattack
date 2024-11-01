@@ -35,7 +35,7 @@ import javax.swing.JPanel;
  * The information panel, displayed to the right of the game, showing
  * the current speed and score.
  */
-public class InfoPanel extends JPanel {
+public final class InfoPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 

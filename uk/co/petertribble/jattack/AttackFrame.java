@@ -24,7 +24,11 @@
 
 package uk.co.petertribble.jattack;
 
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -35,7 +39,7 @@ import javax.swing.JMenuItem;
  * The main Frame to display a Jattack game. Implements the menu bar and holds
  * the game in a panel.
  */
-public class AttackFrame extends JFrame implements ActionListener {
+public final class AttackFrame extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

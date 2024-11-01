@@ -30,7 +30,7 @@ import javax.swing.JPanel;
 /**
  * A Panel holding the game panel and an information panel.
  */
-public class AttackPanel extends JPanel {
+public final class AttackPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
