@@ -34,11 +34,8 @@ package|-package)
 	pkgmk -d /tmp -f pp -r $(pwd) TRIBjattack
 	pkgtrans -s /tmp /tmp/TRIBjattack.pkg TRIBjattack
 	rm pp
-	cd /tmp || exit 1
-	zip -q -r TRIBjattack TRIBjattack
-	mv TRIBjattack.zip TRIBjattack.zap
 	rm -fr /tmp/TRIBjattack
-	ls -l /tmp/TRIBjattack.pkg /tmp/TRIBjattack.zap
+	ls -l /tmp/TRIBjattack.pkg
 	exit 0
 	;;
 esac
