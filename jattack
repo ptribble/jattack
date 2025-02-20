@@ -6,19 +6,19 @@
 #
 
 case $1 in
-build|-build)
+build)
 	javac -Xlint uk/co/petertribble/jattack/*.java
 	jar -cmf jattack.manifest jattack.jar uk/co/petertribble/jattack/*.class pixmaps/jattack.png
 	rm uk/co/petertribble/jattack/*.class
 	exit 0
 	;;
-javadoc|-javadoc)
+javadoc)
 	rm -fr javadoc
 	mkdir javadoc
 	javadoc -Xdoclint:all -d javadoc uk.co.petertribble.jattack
 	exit 0
 	;;
-pmd|-pmd)
+pmd)
 	PMDCATRULES="security bestpractices performance multithreading"
 	RULESETS="rulesets/java/quickstart.xml"
 	shift
@@ -32,7 +32,7 @@ pmd|-pmd)
 	pmd check --cache "${HOME}"/.pmd/cache.jattack -d uk -R "$RULESETS" --use-version java-1.8 2>/dev/null
 	exit 0
 	;;
-package|-package)
+package)
 	./pkg/mkproto > pp
 	pkgmk -d /tmp -f pp -r $(pwd) TRIBjattack
 	pkgtrans -s /tmp /tmp/TRIBjattack.pkg TRIBjattack
