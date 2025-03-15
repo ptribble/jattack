@@ -5,6 +5,8 @@
 # Copyright 2025 Peter Tribble
 #
 
+PMDCACHE="${HOME}/.pmd/cache.jattack"
+
 case $1 in
 build)
 	javac -Xlint uk/co/petertribble/jattack/*.java
@@ -29,7 +31,7 @@ pmd)
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi
-	pmd check --cache "${HOME}"/.pmd/cache.jattack -d uk -R "$RULESETS" --use-version java-1.8 2>/dev/null
+	pmd check --cache "${PMDCACHE}" -d uk -R "$RULESETS" --use-version java-1.8 2>/dev/null
 	exit 0
 	;;
 package)
