@@ -29,7 +29,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
@@ -192,7 +191,7 @@ public final class GamePanel extends JPanel implements ActionListener,
     /**
      * A multiple step.
      */
-    Action mstep = new AbstractAction() {
+    AbstractAction mstep = new AbstractAction() {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	    if (active) {
