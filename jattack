@@ -5,6 +5,10 @@
 # Copyright 2025 Peter Tribble
 #
 
+#
+# new PMD version 7 only has categories, configured in pmd-ruleset.xml
+#
+PMDRULES="./pmd-ruleset.xml"
 PMDCACHE="${HOME}/.pmd/cache.jattack"
 
 case $1 in
@@ -21,17 +25,10 @@ javadoc)
 	exit 0
 	;;
 pmd)
-	PMDCATRULES="security bestpractices performance multithreading"
-	RULESETS="rulesets/java/quickstart.xml"
-	shift
-	for RULE in $PMDCATRULES "$@"
-	do
-	    RULESETS="${RULESETS},category/java/${RULE}.xml"
-	done
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi
-	pmd check --cache "${PMDCACHE}" -d uk -R "$RULESETS" --use-version java-1.8 2>/dev/null
+	pmd check --cache "${PMDCACHE}" -d uk -R ${PMDRULES} --use-version java-1.8 2>/dev/null
 	exit 0
 	;;
 package)
