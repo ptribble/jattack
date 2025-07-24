@@ -8,40 +8,4 @@
 PATH=/usr/jdk/instances/jdk11/bin:$PATH
 export PATH
 
-#
-# new PMD version 7 only has categories, configured in pmd-ruleset.xml
-#
-PMDRULES="./pmd-ruleset.xml"
-PMDCACHE="${HOME}/.pmd/cache.jattack"
-
-case $1 in
-build)
-	javac -Xlint uk/co/petertribble/jattack/*.java
-	jar -cmf jattack.manifest jattack.jar uk/co/petertribble/jattack/*.class pixmaps/jattack.png
-	rm uk/co/petertribble/jattack/*.class
-	exit 0
-	;;
-javadoc)
-	rm -fr javadoc
-	mkdir javadoc
-	javadoc -Xdoclint:all -d javadoc uk.co.petertribble.jattack
-	exit 0
-	;;
-pmd)
-	if [ ! -d "${HOME}/.pmd" ]; then
-	    mkdir -p "${HOME}/.pmd"
-	fi
-	pmd check --cache "${PMDCACHE}" -d uk -R ${PMDRULES} --use-version java-11 2>/dev/null
-	exit 0
-	;;
-package)
-	./pkg/mkproto > pp
-	pkgmk -d /tmp -f pp -r $(pwd) TRIBjattack
-	pkgtrans -s /tmp /tmp/TRIBjattack.pkg TRIBjattack
-	rm pp
-	rm -fr /tmp/TRIBjattack
-	ls -l /tmp/TRIBjattack.pkg
-	exit 0
-	;;
-esac
 exec java -jar jattack.jar "$@"
