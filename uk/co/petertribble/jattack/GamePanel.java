@@ -111,7 +111,7 @@ public final class GamePanel extends JPanel implements ActionListener,
      */
     private int iwarn;
     /**
-     * A counter for mutliple matches in a single step.
+     * A counter for multiple matches in a single step.
      */
     private int multimatch;
 
