@@ -4,4 +4,4 @@
 #
 # Copyright 2025 Peter Tribble
 #
-exec java -jar /usr/share/jattack/jattack.jar
+exec java -jar /usr/share/jattack/jattack.jar "$@"
