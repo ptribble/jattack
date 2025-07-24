@@ -147,7 +147,7 @@ public final class AttackFrame extends JFrame implements ActionListener {
 			    bailOut("Too few rows!");
 			}
 		    } else {
-			bailOut("Expecting an argument to -c!");
+			bailOut("Expecting an argument to -r!");
 		    }
 		} else if ("-c".equals(args[i])) {
 		    ++i;
