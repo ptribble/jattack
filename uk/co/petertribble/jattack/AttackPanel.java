@@ -41,7 +41,7 @@ public final class AttackPanel extends JPanel {
      * @param ncolumns the desired number of rows
      * @param nrows the desired number of rows
      */
-    public AttackPanel(int ncolumns, int nrows) {
+    public AttackPanel(final int ncolumns, final int nrows) {
 	setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 	InfoPanel ipanel = new InfoPanel();
 	gpanel = new GamePanel(ipanel, ncolumns, nrows);

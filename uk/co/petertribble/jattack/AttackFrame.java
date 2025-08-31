@@ -73,7 +73,7 @@ public final class AttackFrame extends JFrame implements ActionListener {
      * @param ncolumns the desired number of rows
      * @param nrows the desired number of rows
      */
-    public AttackFrame(int ncolumns, int nrows) {
+    public AttackFrame(final int ncolumns, final int nrows) {
 	super("JAttack");
 
 	addWindowListener(new WindowExit());
@@ -104,13 +104,13 @@ public final class AttackFrame extends JFrame implements ActionListener {
 
     class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    System.exit(0);
 	}
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (exitItem.equals(e.getSource())) {
 	    System.exit(0);
 	} else if (newItem.equals(e.getSource())) {
@@ -118,7 +118,7 @@ public final class AttackFrame extends JFrame implements ActionListener {
 	}
     }
 
-    private static void bailOut(String s) {
+    private static void bailOut(final String s) {
 	System.err.println(s); //NOPMD
 	System.exit(1);
     }
@@ -129,7 +129,7 @@ public final class AttackFrame extends JFrame implements ActionListener {
      *
      * @param args the command line arguments.
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length > 0) {
 	    int i = 0;
 	    int chosenrows = DEFAULT_ROWS;

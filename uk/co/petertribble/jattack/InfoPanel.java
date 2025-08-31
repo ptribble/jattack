@@ -78,7 +78,7 @@ public final class InfoPanel extends JPanel {
      *
      * @param speed the current speed
      */
-    public void setSpeed(int speed) {
+    public void setSpeed(final int speed) {
 	speedLabel.setText(Integer.toString(speed));
     }
 
@@ -87,7 +87,7 @@ public final class InfoPanel extends JPanel {
      *
      * @param score the current score
      */
-    public void setScore(int score) {
+    public void setScore(final int score) {
 	scoreLabel.setText(Integer.toString(score));
     }
 
@@ -96,7 +96,7 @@ public final class InfoPanel extends JPanel {
      *
      * @param s the message text to display
      */
-    public void setMessage(String s) {
+    public void setMessage(final String s) {
 	msgLabel.setText(s);
     }
 }

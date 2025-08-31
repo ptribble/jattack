@@ -146,7 +146,8 @@ public final class GamePanel extends JPanel implements ActionListener,
      * @param nncolumns the desired number of rows
      * @param nnrows the desired number of rows
      */
-    public GamePanel(InfoPanel nipanel, int nncolumns, int nnrows) {
+    public GamePanel(final InfoPanel nipanel, final int nncolumns,
+		     final int nnrows) {
 	ipanel = nipanel;
 	ncolumns = nncolumns;
 	nrows = nnrows;
@@ -166,7 +167,7 @@ public final class GamePanel extends JPanel implements ActionListener,
      * If a cell contains 0, it's empty and isn't shown. If it is > 0, then
      * the appropriate pattern for that cell is shown.
      */
-    private void populate(int itop) {
+    private void populate(final int itop) {
 	// make the cells at the top of the board empty
 	for (int i = 0; i < ncolumns; i++) {
 	    for (int j = 0; j < nrows - itop + 2; j++) {
@@ -195,7 +196,7 @@ public final class GamePanel extends JPanel implements ActionListener,
      */
     AbstractAction mstep = new AbstractAction() {
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(final ActionEvent e) {
 	    if (active) {
 		step();
 		step();
@@ -279,7 +280,7 @@ public final class GamePanel extends JPanel implements ActionListener,
     /*
      * Clear a horizontal line, and move down all the rows above it.
      */
-    private void clearHmatch(int i, int srow, int nscore) {
+    private void clearHmatch(final int i, final int srow, final int nscore) {
 	int iscore = nscore;
 	// we know it starts at i, but where does it finish
 	int imax = i;
@@ -299,7 +300,7 @@ public final class GamePanel extends JPanel implements ActionListener,
     /*
      * Clear a vertical line.
      */
-    private void clearVmatch(int i, int j, int nscore) {
+    private void clearVmatch(final int i, final int j, final int nscore) {
 	int val = cells[i][j];
 	int iscore = nscore;
 	while (cells[i][j] == val) {
@@ -314,7 +315,7 @@ public final class GamePanel extends JPanel implements ActionListener,
      * Shuffle a row down 1 place, starting at row srow of column i.
      * Used when clearing a horizontal line.
      */
-    private void shuffleDown(int i, int srow) {
+    private void shuffleDown(final int i, final int srow) {
 	int irow = srow;
 	int trow = srow - 1;
 	if (irow < 0) {
@@ -343,7 +344,7 @@ public final class GamePanel extends JPanel implements ActionListener,
 	ipanel.setSpeed(++level);
     }
 
-    private void fill(int irow) {
+    private void fill(final int irow) {
 	for (int i = 0; i < ncolumns; i++) {
 	    cells[i][irow] = newCell();
 	}
@@ -420,7 +421,7 @@ public final class GamePanel extends JPanel implements ActionListener,
 	}
     }
 
-    private void addScore(int i) {
+    private void addScore(final int i) {
 	multimatch++;
 	score += i * multimatch;
 	ipanel.setScore(score);
@@ -429,27 +430,27 @@ public final class GamePanel extends JPanel implements ActionListener,
     // MouseListener
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(final MouseEvent e) {
 	/* Empty implementation for MouseListener interface. */
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(final MouseEvent e) {
 	/* Empty implementation for MouseListener interface. */
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(final MouseEvent e) {
 	/* Empty implementation for MouseListener interface. */
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
+    public void mouseExited(final MouseEvent e) {
 	/* Empty implementation for MouseListener interface. */
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(final MouseEvent e) {
 	if (!active) {
 	    return;
 	}
@@ -538,14 +539,14 @@ public final class GamePanel extends JPanel implements ActionListener,
 
     // ActionListener
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (active) {
 	    step();
 	}
     }
 
     @Override
-    public void paint(Graphics g) {
+    public void paint(final Graphics g) {
 	Graphics2D g2 = (Graphics2D) g;
 	Dimension d = getSize();
 	g2.setColor(bgcolor);
