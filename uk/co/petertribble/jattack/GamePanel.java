@@ -341,7 +341,8 @@ public final class GamePanel extends JPanel implements ActionListener,
     private void upspeed() {
 	delay -= 3;
 	timer.setDelay(delay);
-	ipanel.setSpeed(++level);
+	level++;
+	ipanel.setSpeed(level);
     }
 
     private void fill(final int irow) {
